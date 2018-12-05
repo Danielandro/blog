@@ -1,6 +1,6 @@
 <h1>New Article</h1>
 
-<%= form_with scope: :article, local: true do |form| %>
+<%= form_with scope: :article, url: articles_path, local: true do |form| %>
   <p>
     <%= form.label :title %><br>
     <%= form.text_field :title %>
@@ -19,4 +19,7 @@
 <%# 
 scope: tells form_with helper what the form is for i.e. :article
 |form|  represents FormBuilder object
+url    where form should be submitted to
+url: articles_path   point form to URI pattern associated with articles prefix
+                     by default, POST request is sent to this route (articles#create action on ArticlesController)       
 %>
