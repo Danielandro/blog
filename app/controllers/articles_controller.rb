@@ -1,4 +1,14 @@
 class ArticlesController < ApplicationController
+  def index
+    @articles = Article.all
+  end 
+
+  def show
+    # route expects id parameter
+    # all instance variables are passed to the view
+    @article = Article.find(params[:id])
+  end
+  
   def new
   end
 
@@ -15,13 +25,14 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     # save model in db. Boolean is returned
     @article.save
-    # show the action???
+    # redirect user to 'show' action
     redirect_to @article
-
-    private
-      def article_params
-        params.require(:article).permit(:title, :text)
-      end      
-    
   end
+
+  private
+    def article_params
+      params.require(:article).permit(:title, :text)
+    end      
+    
+  
 end
