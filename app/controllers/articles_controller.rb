@@ -10,6 +10,7 @@ class ArticlesController < ApplicationController
   end
   
   def new
+    @article = Article.new
   end
 
   def create
@@ -24,9 +25,14 @@ class ArticlesController < ApplicationController
     # @article = Article.new(params[:article]) - won't work due to Strong Parameters
     @article = Article.new(article_params)
     # save model in db. Boolean is returned
-    @article.save
+    if @article.save
     # redirect user to 'show' action
-    redirect_to @article
+      redirect_to @article
+    else
+    # if save returns false, renders new.html.erb template.
+    # using render instead of redirect_to so @article is passed to the new template
+      render 'new'
+    end
   end
 
   private
