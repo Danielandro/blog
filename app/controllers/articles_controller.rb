@@ -10,6 +10,7 @@ class ArticlesController < ApplicationController
   end
   
   def new
+    # otherwise invalid input wouldn't be passed to new template
     @article = Article.new
   end
 
