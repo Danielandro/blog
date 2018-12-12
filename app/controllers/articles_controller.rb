@@ -14,6 +14,13 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
+    # update articles
+  def edit
+    # automatically creates a url for submitting the edited article form
+    # uses PATCH http protocol
+    @article = Article.find(params[:id])
+  end
+
   def create
     # pass render a simple hash:
     # key = plain, value = params[:article].inspect
@@ -34,6 +41,10 @@ class ArticlesController < ApplicationController
     # using render instead of redirect_to so @article is passed to the new template
       render 'new'
     end
+  end
+
+  def update
+    
   end
 
   private
