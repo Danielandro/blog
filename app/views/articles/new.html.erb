@@ -1,43 +1,6 @@
 <h1>New Article</h1>
 
-<%= form_with scope: :article, url: articles_path, local: true do |form| %>
-        <%# check if any errors occured %>
-  <% if @article.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%# rails helper - pluralizes error if >1 error %>
-        <%= pluralize(@article.errors.count, "error")%> prohibited this article from being saved:
-      </h2>
-      <ul>
-        <%# print each error message%>
-        <% @article.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
-  <p>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-  </p>
-
-  <p>
-    <%= form.label :text %><br>
-    <%= form.text_area :text %>
-  </p>
-
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+<%= render "form" %>
 
 <%= link_to 'Back', articles_path %>
 
-<%# 
-scope: tells form_with helper what the form is for i.e. :article
-|form|  represents FormBuilder object
-url    where form should be submitted to
-url: articles_path   point form to URI pattern associated with articles prefix
-                     by default, POST request is sent to this route (articles#create action on ArticlesController)       
-%>
