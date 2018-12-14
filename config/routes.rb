@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   get 'welcome/index' # map localhost:3000/welcome/index requests to welcome controller's index action
 
-  #use resources method to declare standard REST resource
-  resources :articles
+  # use resources method to declare standard REST resource
+  resources :articles do
+    resources :comments # nested resource
+  end
 
   root 'welcome#index' # map '/' requests to welcome controller's index action
 end
