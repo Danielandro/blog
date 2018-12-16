@@ -10,26 +10,15 @@
 
 <%# show comments for article %>
 <%# iterate over @article.comments collection, each comment is assigned to local var (comment). 
-which is then available in the partial %>
+which is then available in the partial.
+name of partial determined by looking at model name in the collection (comment.rb in models folder) %>
 <h2>Comments</h2>
 <%= render @article.comments %>
 
 <%# add comments form %>
 <h2>Add a comment:</h2>
 <%# array passed to model builds nested route e.g. /articles/1/comments %>
-<%= form_with(model: [ @article, @article.comments.build ], local: true ) do |form| %>
-  <p>
-    <%= form.label :commenter %><br>
-    <%= form.text_field :commenter %>
-  </p>
-  <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p> 
-<% end %>
+<%= render "comments/form" %>
 
 
 <%= link_to 'Edit', edit_article_path(@article)%> |
