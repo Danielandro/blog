@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
     @comment = @article.comments.find(params[:id])
     # delete comment
     @comment.destroy
-    # redirect to article page
+    # redirect to article page - show action for the article
     redirect_to article_path(@article)
   end
 
