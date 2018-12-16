@@ -9,6 +9,7 @@
 </p>
 
 <p>
+<%# send DELETE request to /articles/:article_id/comments/:id %>
   <%= link_to 'Destroy Comment', [comment.article, comment],
               method: :delete,
               data: { confirm: 'Are you sure?' }%>

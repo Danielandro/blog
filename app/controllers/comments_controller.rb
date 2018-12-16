@@ -8,6 +8,17 @@ class CommentsController < ApplicationController
     redirect_to article_path(@article)
   end
 
+  def destroy
+    # find article by id
+    @article = Article.find(params[:article_id])
+    # check comments collection for comment via id
+    @comment = @article.comments.find(params[:id])
+    # delete comment
+    @comment.destroy
+    # redirect to article page
+    redirect_to article_path(@article)
+  end
+
   private
     # Comment cannot be empty. Accept commenter & body parameters only
     def comment_params
