@@ -8,6 +8,12 @@
   <%= @article.text%>
 </p>
 
+<%# show comments for article %>
+<%# iterate over @article.comments collection, each comment is assigned to local var (comment). 
+which is then available in the partial %>
+<h2>Comments</h2>
+<%= render @article.comments %>
+
 <%# add comments form %>
 <h2>Add a comment:</h2>
 <%# array passed to model builds nested route e.g. /articles/1/comments %>
@@ -25,5 +31,6 @@
   </p> 
 <% end %>
 
-<%= link_to 'Edit', edit_article_path(@article)%>
+
+<%= link_to 'Edit', edit_article_path(@article)%> |
 <%= link_to 'Back', articles_path %>
