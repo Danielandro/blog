@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  http_basic_authenticate_with name: "lpp", password: "secret", only: :destroy
+
   def create
     # keep track of article comment is related to  
     @article = Article.find(params[:article_id])
